@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en"><head>
+        <title>EJ2 Grid</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Typescript Grid Control">
+        <meta name="author" content="Syncfusion">
+        <link id="themeLink" href="https://cdn.syncfusion.com/ej2/bootstrap.css" rel="stylesheet">
+
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script> 
+        
+        
+        <script src="ej2-grid.js"></script>
+	
+        <script src="datasource.js" type="text/javascript"></script>
+
+        <style>
+            .e-pager-default.e-hide {
+                display: none;
+            }
+        </style>
+
+        <script>
+            window.addEventListener("DOMContentLoaded", function() {
+              var licenseBanner = document.querySelector("div[style*='position: fixed'][style*='top: 10px'][style*='left: 10px']");
+              if (licenseBanner) {
+                licenseBanner.style.display = "none";
+              }
+              var popupElement = document.getElementById('js-licensing');
+              if (popupElement) {
+                popupElement.style.display = 'none';
+              }
+            });
+          </script>
+
+    </head>
+    <body>
+        <select id="themeDropdown">
+            <option value="bootstrap" selected>Bootstrap</option>
+            <option value="material" >Material</option>
+            <option value="bootstrap4">Bootstrap4</option>
+            <option value="bootstrap5">Bootstrap5</option>
+            <option value="fabric">Fabric</option>
+            <option value="fluent">Fluent</option>
+            <option value="tailwind">Tailwind</option>
+            <option value="highcontrast">Highcontrast</option>
+        </select>
+
+        <select id="pageCountDropdown" >
+            <option value="2">2</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40" selected>40</option>
+            <option value="50">50</option>
+        </select>
+        <input type="checkbox" id="pageSizeCheckbox" checked/>
+        <label for="pageSizeCheckbox">Page Size:</label>
+        <input type="checkbox" id="rtlCheckbox" />
+        <label for="rtlCheckbox">Enable RTL</label>
+        <input type="checkbox" id="biggerModeCheckbox" />
+        <label for="biggerModeCheckbox">Bigger Mode</label>
+        <div id="Grid"></div>
+        <script src="sample.js" type="text/javascript"></script>
+        <script>
+            var themeDropdown = document.getElementById("themeDropdown");
+            var themeLink = document.getElementById("themeLink");
+
+            themeDropdown.addEventListener('change', function() {
+              var selectedTheme = themeDropdown.value;
+              themeLink.href = "https://cdn.syncfusion.com/ej2/" + selectedTheme + ".css";
+              setTimeout(function() {
+                document.getElementById("Grid").ej2_instances[0].refresh();
+                document.querySelector('.e-gridpager').ej2_instances[0].refresh();
+              }, 400);
+            }); 
+        </script>
+    </body></html>
